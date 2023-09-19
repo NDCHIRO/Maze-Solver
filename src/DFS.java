@@ -3,7 +3,6 @@ import java.util.List;
 public class DFS {
     public static boolean searchPath(int[][] maze, int x, int y
             , List<Integer> path) {
-
         if (maze[y][x] == 9) {
             path.add(x);
             path.add(y);

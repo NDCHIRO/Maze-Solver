@@ -48,6 +48,7 @@ public class View extends JFrame {
                     default : color = Color.WHITE;
 
                 }
+                makeDelay(10);
                 g.setColor(color);
                 g.fillRect(30*col,30*row,30,30);
                 //fill the boarder of each rectangle with GRAY color
@@ -55,10 +56,18 @@ public class View extends JFrame {
                 g.drawRect(30*col,30*row,30,30);
             }
         }
-
-        for(int p=0;p<path.size();p+=2) {
+        //starting from the end point(11,8) to the start point(1,1)
+        /*for(int p=0;p<path.size();p+=2) {
+            makeDelay(200);
             int pathX = path.get(p);
             int pathY = path.get(p+1);
+            g.setColor(Color.GREEN);
+            g.fillRect(pathX*30,pathY*30,30,30);
+        }*/
+        for(int p=path.size()-1;p>=0;p-=2) {
+            makeDelay(200);
+            int pathX = path.get(p-1);
+            int pathY = path.get(p);
             g.setColor(Color.GREEN);
             g.fillRect(pathX*30,pathY*30,30,30);
         }
@@ -73,5 +82,15 @@ public class View extends JFrame {
                 view.setVisible(true);
             }
         });
+    }
+    public static void makeDelay(int delay)
+    {
+        try {
+            Thread.sleep(delay);
+        }
+        catch (InterruptedException e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 }
